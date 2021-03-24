@@ -12,7 +12,6 @@ public class resultadoAnalise {
     public double getQuantidadeFosforo() {
         return quantidadeFosforo;
     }
-
     public void setQuantidadeFosforo(double quantidadeFosforo) {
         this.quantidadeFosforo = quantidadeFosforo;
     }
@@ -20,7 +19,6 @@ public class resultadoAnalise {
     public double getQuantidadePotassio() {
         return quantidadePotassio;
     }
-
     public void setQuantidadePotassio(double quantidadePotassio) {
         this.quantidadePotassio = quantidadePotassio;
     }
@@ -28,7 +26,6 @@ public class resultadoAnalise {
     public double getQuantidadeCalcio() {
         return quantidadeCalcio;
     }
-
     public void setQuantidadeCalcio(double quantidadeCalcio) {
         this.quantidadeCalcio = quantidadeCalcio;
     }
@@ -36,7 +33,6 @@ public class resultadoAnalise {
     public double getQuantidadeMagnesio() {
         return quantidadeMagnesio;
     }
-
     public void setQuantidadeMagnesio(double quantidadeMagnesio) {
         this.quantidadeMagnesio = quantidadeMagnesio;
     }
@@ -44,7 +40,6 @@ public class resultadoAnalise {
     public double getQuantidadeEnxofre() {
         return quantidadeEnxofre;
     }
-
     public void setQuantidadeEnxofre(double quantidadeEnxofre) {
         this.quantidadeEnxofre = quantidadeEnxofre;
     }
@@ -52,7 +47,6 @@ public class resultadoAnalise {
     public double getQuantidadeAluminio() {
         return quantidadeAluminio;
     }
-
     public void setQuantidadeAluminio(double quantidadeAluminio) {
         this.quantidadeAluminio = quantidadeAluminio;
     }
@@ -60,7 +54,6 @@ public class resultadoAnalise {
     public double getQuantidadeAcidezPotencial() {
         return quantidadeAcidezPotencial;
     }
-
     public void setQuantidadeAcidezPotencial(double quantidadeAcidezPotencial) {
         this.quantidadeAcidezPotencial = quantidadeAcidezPotencial;
     }

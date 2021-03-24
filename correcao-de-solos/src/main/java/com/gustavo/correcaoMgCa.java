@@ -51,4 +51,10 @@ public class correcaoMgCa {
         this.fontes = fontes;
     }
 
+    public String resultado() {
+        //falta o cálculo
+        double quantidade=0, custo=0;
+        return "Quantidade a se aplicar: "+quantidade+"\nCusto R$/ha: "+custo;
+    }
+
 }
