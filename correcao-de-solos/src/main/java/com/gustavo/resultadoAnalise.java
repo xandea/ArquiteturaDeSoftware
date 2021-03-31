@@ -1,4 +1,4 @@
-package com;
+package com.gustavo;
 
 public class resultadoAnalise {
     private double quantidadeFosforo;
