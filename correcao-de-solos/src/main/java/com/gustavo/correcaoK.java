@@ -13,22 +13,23 @@ package com.gustavo;
 
 public class correcaoK {
     private double participacao;
-    private fonteDeCorrecao fontes[];
+    private fonteDeCorrecao fontes[] = new fonteDeCorrecao[3];
+
+    public correcaoK(double participacao) {
+        this.participacao = participacao;
+        System.arraycopy(fonteDeCorrecao.correcaoPottasio(), 0, fontes, 0, 3);
+    }
 
     public double getParticipacao() {
         return participacao;
-    }
-
-    public void setParticipacao(double participacao) {
-        this.participacao = participacao;
     }
 
     public fonteDeCorrecao[] getFontes() {
         return fontes;
     }
 
-    public void setFontes(fonteDeCorrecao[] fontes) {
-        this.fontes = fontes;
+    public void setPrecoFonte(int i, double preco) {
+        fontes[i].setPreco(preco);
     }
 
     public String resultado() {

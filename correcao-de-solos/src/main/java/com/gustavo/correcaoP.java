@@ -15,7 +15,14 @@ package com.gustavo;
 public class correcaoP {
     private String teorDeFosforo;
     private double eficiencia;
-    private fonteDeCorrecao fontes[];
+    private fonteDeCorrecao fontes[] = new fonteDeCorrecao[12];
+
+    public correcaoP(String teorDeFosforo, double eficiencia) {
+        fonteDeCorrecao teste = new fonteDeCorrecao("a", 0.0);
+        this.teorDeFosforo = teorDeFosforo;
+        this.eficiencia = eficiencia;
+        System.arraycopy(fonteDeCorrecao.correcaoFosforo(), 0, fontes, 0, 12);
+    }
 
     public String getTeorDeFosforo() {
         return teorDeFosforo;
@@ -29,17 +36,11 @@ public class correcaoP {
         return eficiencia;
     }
 
-    public void setEficiencia(double eficiencia) {
-        this.eficiencia = eficiencia;
-    }
 
     public fonteDeCorrecao[] getFontes() {
         return fontes;
     }
 
-    public void setFontes(fonteDeCorrecao[] fontes) {
-        this.fontes = fontes;
-    }
 
     public String resultado() {
         //falta o cálculo
