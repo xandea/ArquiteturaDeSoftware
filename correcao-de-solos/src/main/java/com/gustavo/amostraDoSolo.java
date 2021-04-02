@@ -8,8 +8,6 @@ public class amostraDoSolo {
     private double teorEnxofre;
     private double teorAluminio;
     private double teorHAL;
-    private double Scmol;
-    private double CTCcmol;
 
     public amostraDoSolo (double teorFosforo, double teorPotassio, double teorCalcio, double teorMagnesio, double teorEnxofre, double teorAluminio, double teorHAL) {
         this.teorFosforo = teorFosforo;
@@ -19,9 +17,28 @@ public class amostraDoSolo {
         this.teorEnxofre = teorEnxofre;
         this.teorAluminio = teorAluminio;
         this.teorHAL = teorHAL;
-        this.Scmol = teorCalcio + teorPotassio + teorMagnesio;
-        this.CTCcmol = Scmol + teorHAL;
     }
+
+    public double somaCmol() {
+        return this.teorPotassio + this.teorCalcio + this.teorMagnesio;
+    }
+
+    public double ctc() {
+        return somaCmol() + this.teorHAL;
+    }
+
+    public double satBaseV() {
+        return (somaCmol()/ctc())*100;
+    }
+
+    public double moCento() {
+		return this.teorFosforo/10;
+	}
+
+	public double carbono() {
+		return this.teorFosforo/1.72;
+	}
+
 
     public double getTeorFosforo() {
         return teorFosforo;
@@ -51,11 +68,4 @@ public class amostraDoSolo {
         return teorHAL;
     } 
 
-    public double getScmol() {
-        return Scmol;
-    }
-
-    public double getCTCcmol() {
-        return CTCcmol;
-    }
 }
