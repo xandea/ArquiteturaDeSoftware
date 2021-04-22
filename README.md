@@ -1,5 +1,5 @@
 # ArquiteturaDeSoftware
-Avaliação do código já criado:
+Avaliação do código já criado utilizando cloc:
 <pre>
 15 text files.
 15 unique files.
@@ -17,9 +17,8 @@ INI                              4              0              0             19
 SUM:                            15             77             67            501
 -------------------------------------------------------------------------------
 </pre>
-<pre>
 Quantidade de linhas por arquivo:
-
+<pre>
 -------------------------------------------------------------------------------------------------------------------
 File                                                                            blank        comment           code
 -------------------------------------------------------------------------------------------------------------------
@@ -42,3 +41,5 @@ correcao-de-solos\.settings\org.eclipse.jdt.apt.core.prefs                      
 SUM:                                                                               77             67            501
 -------------------------------------------------------------------------------------------------------------------
 </pre>
+
+*Alterações na arquitetura do código e o relatório das alterações serão feitos para o proximo round de correções.
