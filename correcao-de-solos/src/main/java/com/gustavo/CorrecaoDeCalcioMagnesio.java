@@ -1,23 +1,10 @@
 package com.gustavo;
 
-    /* 
-        Dados de entrada:
-            % de participação do CÁLCIO na CTC, desejada;
-            PRNT;
-            Teor de CaO do corretivo;
-            Fonte de Cálcio e Magnésio;
-            Valor em toneladas;
-
-        Dados de saída:
-            Quantidade a aplicar;
-            Custo R$/ha;
-    */
-
-public class correcaoMgCa {
+public class CorrecaoDeCalcioMagnesio {
     private double participacao;
     private double PRNT;
     private double teorCaO;
-    private fonteDeCorrecao fontes[];
+    private FonteDeCorrecao fontesDeCorrecao[];
 
     public double getParticipacao() {
         return participacao;
@@ -31,7 +18,7 @@ public class correcaoMgCa {
         return PRNT;
     }
 
-    public void setPRNT(double pRNT) {
+    public void setPRNT(double PRNT) {
         PRNT = pRNT;
     }
 
@@ -43,12 +30,12 @@ public class correcaoMgCa {
         this.teorCaO = teorCaO;
     }
 
-    public fonteDeCorrecao[] getFontes() {
-        return fontes;
+    public FonteDeCorrecao[] getfontesDeCorrecaoDeCorrecao() {
+        return fontesDeCorrecao;
     }
 
-    public void setFontes(fonteDeCorrecao[] fontes) {
-        this.fontes = fontes;
+    public void setfontesDeCorrecao(FonteDeCorrecao[] fontesDeCorrecao) {
+        this.fontesDeCorrecao = fontesDeCorrecao;
     }
 
     public String resultado() {

@@ -1,6 +1,6 @@
 package com.gustavo;
 
-public class amostraDoSolo {
+public class AmostraDoSolo {
     private double teorFosforo;
     private double teorPotassio;
     private double teorCalcio;
@@ -9,7 +9,7 @@ public class amostraDoSolo {
     private double teorAluminio;
     private double teorHAL;
 
-    public amostraDoSolo (double teorFosforo, double teorPotassio, double teorCalcio, double teorMagnesio, double teorEnxofre, double teorAluminio, double teorHAL) {
+    public AmostraDoSolo (double teorFosforo, double teorPotassio, double teorCalcio, double teorMagnesio, double teorEnxofre, double teorAluminio, double teorHAL) {
         this.teorFosforo = teorFosforo;
         this.teorPotassio = teorPotassio;
         this.teorCalcio = teorCalcio;

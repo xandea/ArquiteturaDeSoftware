@@ -1,30 +1,18 @@
 package com.gustavo;
 
-    /* 
-        Dados de entrada:
-            Teor de fósforo a atingir;
-            Eficiência do Fósforo;
-            Fonte de Fósforo;
-            Valor em toneladas;
-
-        Dados de saída:
-            Quantidade a aplicar;
-            Custo R$/ha;
-    */
-
-public class correcaoP {
+public class CorrecaoDeFosforo {
     private String teorDeFosforoNoSolo;
     private String teorDeFosforoDesejado;
-    private double eficiencia;
+    private double eficienciaDoFosforo;
     private int fonteDeCorrecaoUtilizada;
-    private fonteDeCorrecao fontes[] = new fonteDeCorrecao[12];
+    private fonteDeCorrecao fontesDeCorrecao[] = new fonteDeCorrecao[12];
 
-    public correcaoP(String teorDeFosforoNoSolo, String teorDeFosforoDesejado, double eficiencia, int fonteDeCorrecaoUtilizada) {
+    public CorrecaoDeFosforo(String teorDeFosforoNoSolo, String teorDeFosforoDesejado, double eficienciaDoFosforo, int fonteDeCorrecaoUtilizada) {
         this.teorDeFosforoNoSolo = teorDeFosforoNoSolo;
         this.teorDeFosforoDesejado = teorDeFosforoDesejado;
-        this.eficiencia = eficiencia;
+        this.eficienciaDoFosforo = eficienciaDoFosforo;
         this.fonteDeCorrecaoUtilizada = fonteDeCorrecaoUtilizada;
-        System.arraycopy(fonteDeCorrecao.correcaoFosforo(), 0, fontes, 0, 12);
+        System.arraycopy(fonteDeCorrecao.correcaoFosforo(), 0, fontesDeCorrecao, 0, 12);
     }
 
     public String getTeorDeFosforoNoSolo() {
@@ -35,8 +23,8 @@ public class correcaoP {
         this.teorDeFosforo = teorDeFosforoNoSolo;
     }
 
-    public double getEficiencia() {
-        return eficiencia;
+    public double getEficienciaDoFosforo() {
+        return eficienciaDoFosforo;
     }
 
     public int getFonteDeCorrecaoUtilizada() {
@@ -44,99 +32,104 @@ public class correcaoP {
     }
 
     public fonteDeCorrecao[] getFontes() {
-        return fontes;
+        return fontesDeCorrecao;
     }
 
     public String resultado() {
         //Custo
-        double quantidade=0, custo=0, qtdFosforoEmMgDm, qtdFosforoEmKgHa, qtdP2O5EmKgHa, qtdP2O5EmKgHa, qtdDeFonteEmKgHa, 
-                qtdDeFonteEmKgAlqueire;
+        double  quantidade=0, custo=0, 
+                quantidadeFosforoEmMgDm, 
+                quantidadeFosforoEmKgHa, 
+                quantidadeP2O5EmKgHa, 
+                quantidadeP2O5EmKgHa, 
+                quantidadeDeFonteEmKgHa, 
+                quantidadeDeFonteEmKgAlqueire;
         double nutrienteExtra1, nutrienteExtra2;
         String nomeNutrienteExtra1, nomeNutrienteExtra2;
-        qtdFosforoEmMgDm = this.teorDeFosforoNoSolo - this.teorDeFosforoDesejado;
-        if (qtdFosforoEmMgDm < 0.01) {
-            return 0;
+        quantidadeFosforoEmMgDm = this.teorDeFosforoNoSolo - this.teorDeFosforoDesejado;
+        if (quantidadeFosforoEmMgDm < 0.01) {
+            return "Nao ha necessidade de correcao";
         }
-        qtdFosforoEmKgHa = qtdFosforoEmMgDm*2;
-        qtdP2O5EmKgHa = qtdFosforoEmKgHa*2,29;
-        qtdP2O5EmKgHa *= 100/(this.eficiencia/100);
-        qtdDeFonteEmKgHa = qtdP2O5EmKgHa * 100 / this.fontes[fonteDeCorrecaoUtilizada].getTeor();
-        qtdDeFonteEmKgAlqueire = qtdDeFonteEmKgHa*2;
-        custo = (qtdDeFonteEmKgAlqueire * fontes[fonteDeCorrecaoUtilizada].getPreco())/(1000*2,42);
-        quantidade = qtdDeFonteEmKgHa;
+        quantidadeFosforoEmKgHa = quantidadeFosforoEmMgDm*2;
+        quantidadeP2O5EmKgHa = quantidadeFosforoEmKgHa*2,29;
+        quantidadeP2O5EmKgHa *= 100/(this.eficienciaDoFosforo/100);
+        quantidadeDeFonteEmKgHa = quantidadeP2O5EmKgHa * 100 / this.fontesDeCorrecao[fonteDeCorrecaoUtilizada].getTeor();
+        quantidadeDeFonteEmKgAlqueire = quantidadeDeFonteEmKgHa*2;
+        custo = (quantidadeDeFonteEmKgAlqueire * fontesDeCorrecao[fonteDeCorrecaoUtilizada].getPreco())/(1000*2,42);
+        quantidade = quantidadeDeFonteEmKgHa;
         //"Essa correção de FÓSFORO, fornecerá também (kg/ha):"
         switch(fonteDeCorrecaoUtilizada){
             case 0:
                 nomeNutrienteExtra1 = "Enxofre";
-                nutrienteExtra1 = (qtdDeFonteEmKgAlqueire*0,1)/2,42;
+                nutrienteExtra1 = (quantidadeDeFonteEmKgAlqueire*0,1)/2,42;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.28)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.28)/2.42;
                 break;
             case 1:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.2)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.2)/2.42;
                 break;
             case 2:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Nitrogenio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.09)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.09)/2.42;
                 break;
             case 3:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Nitrogenio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.16)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.16)/2.42;
                 break;
             case 4:
                 nomeNutrienteExtra1 = "Magnesio";
-                nutrienteExtra1 = qtdDeFonteEmKgHa*0,15;
+                nutrienteExtra1 = quantidadeDeFonteEmKgHa*0,15;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.28)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.28)/2.42;
                 break;
             case 5:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.52)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.52)/2.42;
                 break;
             case 6:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.52)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.52)/2.42;
                 break;
             case 7:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.45)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.45)/2.42;
                 break;
             case 8:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.28)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.28)/2.42;
                 break;
             case 9:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.44)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.44)/2.42;
                 break;
             case 10:
                 nomeNutrienteExtra1 = "";
                 nutrienteExtra1 = 0.0;
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.0);
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.0);
                 break;
             case 11:
                 nomeNutrienteExtra1 = "Enxofre"
-                nutrienteExtra1 = (qtdDeFonteEmKgAlqueire*0,1)/2,42
+                nutrienteExtra1 = (quantidadeDeFonteEmKgAlqueire*0,1)/2,42
                 nomeNutrienteExtra2 = "Calcio";
-                nutrienteExtra2 = (qtdDeFonteEmKgAlqueire * 0.18)/2.42;
+                nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.18)/2.42;
                 break;
         }
         return "Quantidade a se aplicar: "+quantidade+"\nCusto R$/ha: "+custo;
