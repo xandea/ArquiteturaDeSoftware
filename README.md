@@ -42,4 +42,48 @@ SUM:                                                                            
 -------------------------------------------------------------------------------------------------------------------
 </pre>
 
-*Alterações na arquitetura do código e o relatório das alterações serão feitos para o proximo round de correções.
+Commit 1: NOMES DE VARIÁVEIS E CLASSES
+    Afim de melhorar o entendimento do código, os nomes das classes e de algumas variáveis foram trocados para serem mais descritivos e retirar algumas abreviações.
+
+Commit 2: Refatoração da classe CorrecaoDeFosforo:
+    link para o commit antigo: https://github.com/gustavosako/ArquiteturaDeSoftware/commit/5193531288fe45af644c64d373daf51bf599aab8
+    Uma das coisas percebidas na avaliação do código é que existe bastante redundancia de dados, ou seja, dados iguais estão armazenados em diversas partes do código. Podemos ver no exemplo:
+    Classe CorrecaoDeFosforo:
+<pre>
+    public class CorrecaoDeFosforo {
+        private String teorDeFosforoNoSolo;
+        private String teorDeFosforoDesejado;
+        private double eficienciaDoFosforo;
+    ...
+</pre>
+    Classe AmostraDoSolo:
+<pre>
+    public class AmostraDoSolo {
+        private double teorFosforo;
+        private double teorPotassio;
+        private double teorCalcio;
+    ...
+</pre>
+<pre>
+    public class AmostraDoSolo {
+        private double teorFosforo;
+        private double teorPotassio;
+        private double teorCalcio;
+    ...
+</pre>
+    Em ambas as classes o "teor de fósforo" está armazenado, mesmo que com nomes diferentes. Para evitar isso a lógica do funcionamento da classe CorrecaoDeFosforo foi alterada, para ao invés de armazenar as informações redundantes, armazenar as informações que serão imprimidas na tela, recebendo como parâmetro essas outras informações.
+    Para acomodar essa mudança, também foi mudada a classe responsável pelos cálculos, que foi quebrada em outros métodos e, ao invés de imprimir as informações na tela, retorna o resultado dos cálculos para os atributos da classe.
+
+Avaliação utilizando cloc no commit atual:
+<pre>
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Java                             8             60             31            331
+XML                              2              0              0             78
+Maven                            1              6              4             65
+INI                              4              0              0             19
+-------------------------------------------------------------------------------
+SUM:                            15             66             35            493
+-------------------------------------------------------------------------------
+</pre>

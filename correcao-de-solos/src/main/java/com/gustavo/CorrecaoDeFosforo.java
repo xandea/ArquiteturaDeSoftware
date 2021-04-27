@@ -1,63 +1,48 @@
 package com.gustavo;
 
 public class CorrecaoDeFosforo {
-    private String teorDeFosforoNoSolo;
-    private String teorDeFosforoDesejado;
-    private double eficienciaDoFosforo;
-    private int fonteDeCorrecaoUtilizada;
+    private double quantidadeAAplicarKaHa;
+    private double custoRsHa;
     private fonteDeCorrecao fontesDeCorrecao[] = new fonteDeCorrecao[12];
 
-    public CorrecaoDeFosforo(String teorDeFosforoNoSolo, String teorDeFosforoDesejado, double eficienciaDoFosforo, int fonteDeCorrecaoUtilizada) {
-        this.teorDeFosforoNoSolo = teorDeFosforoNoSolo;
-        this.teorDeFosforoDesejado = teorDeFosforoDesejado;
-        this.eficienciaDoFosforo = eficienciaDoFosforo;
-        this.fonteDeCorrecaoUtilizada = fonteDeCorrecaoUtilizada;
+    public CorrecaoDeFosforo(
+            double teorDeFosforoNoSolo, 
+            double teorDeFosforoDesejado, 
+            FonteDeCorrecao[] fontesDeCorrecao, 
+            int fonteDeCorrecaoUtilizada) {
         System.arraycopy(fonteDeCorrecao.correcaoFosforo(), 0, fontesDeCorrecao, 0, 12);
+        this.quantidadeAAplicarKaHa = calculaQuandidadeAAplicar(teorDeFosforoNoSolo, teorDeFosforoDesejado, fontesDeCorrecao, fonteDeCorrecaoUtilizada);
+        this.custoRsHa = calculaCusto(fontesDeCorrecao, fonteDeCorrecaoUtilizada);
     }
 
-    public String getTeorDeFosforoNoSolo() {
-        return teorDeFosforoNoSolo;
-    }
-
-    public void setTeorDeFosforo(String teorDeFosforo) {
-        this.teorDeFosforo = teorDeFosforoNoSolo;
-    }
-
-    public double getEficienciaDoFosforo() {
-        return eficienciaDoFosforo;
-    }
-
-    public int getFonteDeCorrecaoUtilizada() {
-        return fonteDeCorrecaoUtilizada;
-    }
-
-    public fonteDeCorrecao[] getFontes() {
-        return fontesDeCorrecao;
-    }
-
-    public String resultado() {
-        //Custo
-        double  quantidade=0, custo=0, 
-                quantidadeFosforoEmMgDm, 
+    private double calculaQuandidadeAAplicar(
+                    double teorDeFosforoNoSolo, 
+                    double teorDeFosforoDesejado, 
+                    FonteDeCorrecao[] fontesDeCorrecao, 
+                    int fonteDeCorrecaoUtilizada) {
+        double  quantidadeFosforoEmMgDm, 
                 quantidadeFosforoEmKgHa, 
                 quantidadeP2O5EmKgHa, 
                 quantidadeP2O5EmKgHa, 
-                quantidadeDeFonteEmKgHa, 
-                quantidadeDeFonteEmKgAlqueire;
-        double nutrienteExtra1, nutrienteExtra2;
-        String nomeNutrienteExtra1, nomeNutrienteExtra2;
-        quantidadeFosforoEmMgDm = this.teorDeFosforoNoSolo - this.teorDeFosforoDesejado;
+                quantidadeDeFonteEmKgHa;
+        quantidadeFosforoEmMgDm = teorDeFosforoDesejado - teorDeFosforoNoSolo;
         if (quantidadeFosforoEmMgDm < 0.01) {
-            return "Nao ha necessidade de correcao";
+            return 0.0;
         }
         quantidadeFosforoEmKgHa = quantidadeFosforoEmMgDm*2;
         quantidadeP2O5EmKgHa = quantidadeFosforoEmKgHa*2,29;
         quantidadeP2O5EmKgHa *= 100/(this.eficienciaDoFosforo/100);
         quantidadeDeFonteEmKgHa = quantidadeP2O5EmKgHa * 100 / this.fontesDeCorrecao[fonteDeCorrecaoUtilizada].getTeor();
-        quantidadeDeFonteEmKgAlqueire = quantidadeDeFonteEmKgHa*2;
-        custo = (quantidadeDeFonteEmKgAlqueire * fontesDeCorrecao[fonteDeCorrecaoUtilizada].getPreco())/(1000*2,42);
-        quantidade = quantidadeDeFonteEmKgHa;
-        //"Essa correção de FÓSFORO, fornecerá também (kg/ha):"
+        return quantidadeDeFonteEmKgHa;
+    }
+
+    private double calculaCusto (FonteDeCorrecao[] fontesDeCorrecao, int fonteDeCorrecaoUtilizada) {
+        return (this.quantidadeAAplicarKaHa*2.0*fontesDeCorrecao[fonteDeCorrecaoUtilizada].getPreco())/(1000*2,42);
+    }
+
+    private void imprimeNutrienteExtra(int fonteDeCorrecaoUtilizada) {
+        String nomeNutrienteExtra1 , nomeNutrienteExtra2;
+        double nutrienteExtra1, nutrienteExtra2;
         switch(fonteDeCorrecaoUtilizada){
             case 0:
                 nomeNutrienteExtra1 = "Enxofre";
@@ -131,8 +116,6 @@ public class CorrecaoDeFosforo {
                 nomeNutrienteExtra2 = "Calcio";
                 nutrienteExtra2 = (quantidadeDeFonteEmKgAlqueire * 0.18)/2.42;
                 break;
-        }
-        return "Quantidade a se aplicar: "+quantidade+"\nCusto R$/ha: "+custo;
     }
     
 }

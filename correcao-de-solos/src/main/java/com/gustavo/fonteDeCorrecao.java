@@ -36,7 +36,6 @@ public class FonteDeCorrecao {
         return fontesDePotassio;
     }
 
-
     public String getNome() {
         return nome;
     }
