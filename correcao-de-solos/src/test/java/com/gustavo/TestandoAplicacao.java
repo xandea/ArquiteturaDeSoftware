@@ -33,7 +33,6 @@ public class TestandoAplicacao {
     
     @Test
     public void TesteQuadranteCorrecaoRecuperacaoDeFosforo() {
-        AmostraDoSolo amostra = new AmostraDoSolo(8.59,0.15,5.76,1.63,3.67,0.0,5.35,30.7);
         CorrecaoDeFosforo c = new CorrecaoDeFosforo(8.59,12.0,0,70.0,1260.0);
         assertEquals(123.95079365079366, c.getquantidadeAAplicarKaHa(),0.0);//Testar quantidade a aplicar em kgHa
         assertEquals(156.178, c.getCustoRsHa(),0.0);//Testar quantidade a aplicar em kgHa
@@ -41,10 +40,14 @@ public class TestandoAplicacao {
         assertEquals("Enxofre",c.getnomeNutrienteExtra1());//Testando o nome do nutriente Extra 1
         assertEquals(12.395079365079365, c.getnutrienteExtra1(),0.0);//Testar quantidade do nutriente Extra 1
         assertEquals("Calcio",c.getnomeNutrienteExtra2());//Testando o nome do nutriente Extra 2
-        assertEquals(34.70622222222223, c.getnutrienteExtra2(),0.0);//Testar quantidade do nutriente Extra 2
-        
-        
-        
-        
+        assertEquals(34.70622222222223, c.getnutrienteExtra2(),0.0);//Testar quantidade do nutriente Extra 2   
+    }
+    
+    @Test
+    public void TesteQuadranteCorrecaoRecuperacaoDePotassio() {
+        AmostraDoSolo amostra = new AmostraDoSolo(8.59,0.15,5.76,1.63,3.67,0.0,5.35,30.7);
+        CorrecaoDePotassio cp = new CorrecaoDePotassio(3.0,0.15,3.0,0,amostra,2500.00);
+        assertEquals(450.5462068965517, cp.getQuantidadeAaplicarParaRecuperacaoDoPotassio(),0.0);//Testando a quantidade a aplicar de recuperação de potassio
+        assertEquals(1126.3655172413792, cp.getCustoDeRecuperacaoDoPotassio(),0.0);//Testando do custo a aplicar sobre a recuperação do potassio
     }
 }
