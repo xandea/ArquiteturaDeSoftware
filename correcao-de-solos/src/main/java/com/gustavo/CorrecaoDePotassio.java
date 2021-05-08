@@ -16,7 +16,7 @@ public class CorrecaoDePotassio {
     }
 
     public double getParticipacaoNaCTCDesejada() {
-        return participacao;
+        return participacaoNaCTCDesejada;
     }
 
     public double getTeorDePotassioNoSolo() {
