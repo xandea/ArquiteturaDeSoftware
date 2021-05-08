@@ -8,8 +8,9 @@ public class AmostraDoSolo {
     private double teorEnxofre;
     private double teorAluminio;
     private double teorHAL;
+    private double materiaOrganica;
 
-    public AmostraDoSolo (double teorFosforo, double teorPotassio, double teorCalcio, double teorMagnesio, double teorEnxofre, double teorAluminio, double teorHAL) {
+    public AmostraDoSolo (double teorFosforo, double teorPotassio, double teorCalcio, double teorMagnesio, double teorEnxofre, double teorAluminio, double teorHAL,double materiaOrganica) {
         this.teorFosforo = teorFosforo;
         this.teorPotassio = teorPotassio;
         this.teorCalcio = teorCalcio;
@@ -17,6 +18,7 @@ public class AmostraDoSolo {
         this.teorEnxofre = teorEnxofre;
         this.teorAluminio = teorAluminio;
         this.teorHAL = teorHAL;
+        this.materiaOrganica = materiaOrganica;
     }
 
     public double somaCmol() {
@@ -32,14 +34,14 @@ public class AmostraDoSolo {
     }
 
     public double moCento() {
-		return this.teorFosforo/10;
+		return this.materiaOrganica/10;
 	}
 
 	public double carbono() {
-		return this.teorFosforo/1.72;
+		return this.materiaOrganica/10/1.72*10;
 	}
 
-
+        
     public double getTeorFosforo() {
         return teorFosforo;
     }
@@ -67,5 +69,5 @@ public class AmostraDoSolo {
     public double getTeorHAL() {
         return teorHAL;
     } 
-
+    
 }
