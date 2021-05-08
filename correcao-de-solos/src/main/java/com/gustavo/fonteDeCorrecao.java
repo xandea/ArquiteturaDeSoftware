@@ -1,16 +1,16 @@
 package com.gustavo;
 
 public class FonteDeCorrecao {
-    private String nome;
+    private final String nome;
     private double preco;
-    private double teor;
+    private final double teor;
 
     public FonteDeCorrecao (String nome, double preco, double teor) {
         this.nome = nome;
         this.preco = preco;
         this.teor = teor;
     }
-
+    
     public static FonteDeCorrecao[] correcaoFosforo() {
         FonteDeCorrecao fontesDeFosforo[] = new FonteDeCorrecao[12];
         fontesDeFosforo[0] = new FonteDeCorrecao("Superfosfato Simples", 0.0, 18.0);
@@ -51,4 +51,5 @@ public class FonteDeCorrecao {
     public double getTeor() {
         return teor;
     }
+    
 }

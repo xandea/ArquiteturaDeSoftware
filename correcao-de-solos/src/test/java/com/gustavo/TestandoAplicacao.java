@@ -29,6 +29,22 @@ public class TestandoAplicacao {
         assertEquals(58.494957331264544, amostra.satBaseV(),0.0);//testar V%atual
         assertEquals(3.07, amostra.moCento(),0.0);//testar M.O.%
         assertEquals(17.848837209302324, amostra.carbono(),0.0);//Testar carbono
+    }
+    
+    @Test
+    public void TesteQuadranteCorrecaoRecuperacaoDeFosforo() {
+        AmostraDoSolo amostra = new AmostraDoSolo(8.59,0.15,5.76,1.63,3.67,0.0,5.35,30.7);
+        CorrecaoDeFosforo c = new CorrecaoDeFosforo(8.59,12.0,0,70.0,1260.0);
+        assertEquals(123.95079365079366, c.getquantidadeAAplicarKaHa(),0.0);//Testar quantidade a aplicar em kgHa
+        assertEquals(156.178, c.getCustoRsHa(),0.0);//Testar quantidade a aplicar em kgHa
+        assertEquals("Superfosfato Simples",FonteDeCorrecao.correcaoFosforo()[0].getNome());//Testando o nome da fonte de fosforo a utilizar
+        assertEquals("Enxofre",c.getnomeNutrienteExtra1());//Testando o nome do nutriente Extra 1
+        assertEquals(12.395079365079365, c.getnutrienteExtra1(),0.0);//Testar quantidade do nutriente Extra 1
+        assertEquals("Calcio",c.getnomeNutrienteExtra2());//Testando o nome do nutriente Extra 2
+        assertEquals(34.70622222222223, c.getnutrienteExtra2(),0.0);//Testar quantidade do nutriente Extra 2
+        
+        
+        
         
     }
 }
