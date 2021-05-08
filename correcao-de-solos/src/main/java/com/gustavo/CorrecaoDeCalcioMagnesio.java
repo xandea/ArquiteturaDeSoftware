@@ -19,7 +19,7 @@ public class CorrecaoDeCalcioMagnesio {
     }
 
     public void setPRNT(double PRNT) {
-        PRNT = pRNT;
+        this.PRNT = PRNT;
     }
 
     public double getTeorCaO() {
