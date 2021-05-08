@@ -32,7 +32,7 @@ public class FonteDeCorrecao {
         FonteDeCorrecao fontesDePotassio[] = new FonteDeCorrecao[3];
         fontesDePotassio[0] = new FonteDeCorrecao("Cloreto de Potássio", 0.0, 58.0);
         fontesDePotassio[1] = new FonteDeCorrecao("Sulfato de Potássio", 0.0, 52.0);
-        fontesDePotassio[2] = new FonteDeCorrecao("Sulf.Potássio/Mag.", 0.0, 22,0);
+        fontesDePotassio[2] = new FonteDeCorrecao("Sulf.Potássio/Mag.", 0.0, 22.0);
         return fontesDePotassio;
     }
 
