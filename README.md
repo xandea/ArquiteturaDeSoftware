@@ -119,9 +119,13 @@ Assim que o clone foi feito, as seguintes alterações foi necessaria para come�
 </pre>
 
 ## Realização dos testes e problemas encontrados
+### TexturaSolo.java
+<pre>
+- Necessário criar um enum com os valores ideais de fontes de nutrientes para cada textura
+</pre>
 ### CorrecaoDeFosforo.java
 <pre>
-- necessario criar a função get para o custo do calculo da fonte de fosforo a adicionar;
+- Necessário criar a função get para o custo do calculo da fonte de fosforo a adicionar;
 - A conta de "calculaQuandidadeAAplicar" estava sendo multiplicada por 100, fazendo necessario sua retirada.
 - A "this.fontesDeCorrecao" sempre retornava nulo, em relação ao seu teor da fonte utilizada para correção, porque não fazia referencia a classe correta.
 - Alteração da função que imprime, pois não tinhamos acesso a ela
