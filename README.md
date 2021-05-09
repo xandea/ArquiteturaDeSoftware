@@ -87,3 +87,53 @@ INI                              4              0              0             19
 SUM:                            15             66             35            493
 -------------------------------------------------------------------------------
 </pre>
+
+# Atividade 4
+Assim que o clone foi feito, as seguintes alterações foi necessaria para começar a rodar o código:
+### FonteDeCorrecao.java
+<pre>
+- O nome da classe "FonteDeCorrecao" não correspode com o ".java". Foi necessario realizar a substituição para garantir que o software funcionasse.
+- Dentro da função "correcaoPottasio" a fonte correspondente a "Sul.Potassio/Mag" há 3 argumentos, sendo que a função apenas recebe 2. Foi corrigido.
+</pre>
+### CorrecaoDeCalcioMagnesio.java
+<pre>
+- Função setPRNT não tem um "this." referente a variavel private dentro da classe, e o nome estava gravado errada.
+</pre>
+### CorrecaoDePotassio.java
+<pre>
+- A função "getParticipacaoNaCTCDesejada" retorna uma variavel não existente. Sendo necessario a correção para a "participacaoNaCTCDesejada"
+</pre>
+### CorrecaoDeFosforo.java
+<pre>
+- O tipo de "fonteDeCorrecao" não corresponde com a classe criada
+- Erro em doble, utilizando "," em vez de "."
+- Utilizado variavel corresponde "quantidadeDeFonteEmKgAlqueire" sendo que não é uma entrada da função
+- falta de ";" para fechar a função
+- Faltante o "}" que fecha a classe principal
+</pre>
+### AmostraDoSolo.java
+<pre>
+- O nome da classe nao corresponde com o nome do ".java"
+- não existe a entrada de "matéria organica" para o calculo correto do carbono
+- Calculo errado do M.O%, necessario utilizar a entrada de "materiaOrganica" adicionada
+</pre>
+
+## Realização dos testes e problemas encontrados
+### CorrecaoDeFosforo.java
+<pre>
+- necessario criar a função get para o custo do calculo da fonte de fosforo a adicionar;
+- A conta de "calculaQuandidadeAAplicar" estava sendo multiplicada por 100, fazendo necessario sua retirada.
+- A "this.fontesDeCorrecao" sempre retornava nulo, em relação ao seu teor da fonte utilizada para correção, porque não fazia referencia a classe correta.
+- Alteração da função que imprime, pois não tinhamos acesso a ela
+- Há redundancia nos calculos de alqueiro mas, foi mantido.
+</pre>
+### CorrecaoDePotassio.java
+<pre>
+- Há erro no calculo de kg de potassio a adicionar e no custo. Foi alterado em relação a eficiencia do potassio para um número double.
+- O vetor começa em 0, sendo assim, o equivalente a 1 "Cloreto de Potássio" na planilha, é zero no software. (Foi mantido mas, há inconsistência).
+- Necassario adicionar construtores para acesso da classe de teste em relação a quantidade e o custo.
+</pre>
+
+## Considerações finais
+Não é um trabalho trivial consertar erro dos outros, além do que o trabalho apresentado não pensa em formas de manutenabilidade. Não havia classes de teste, variáveis apresentava-se com nomes confusos e existencia de condicionais em excesso.
+Deu muito trabalho para adequar a planilha e corre o risco de uma nova introdução de dados impactar no código, consequentimente em seu retorno. Pois, não é tratado a entrada de dados em relação a valores nulos ou vazios.
