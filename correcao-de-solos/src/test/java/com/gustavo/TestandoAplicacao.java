@@ -24,6 +24,12 @@ public class TestandoAplicacao {
     @Test
     public void TesteQuadranteTeoresdosolo() {
         AmostraDoSolo amostra = new AmostraDoSolo(8.59,0.15,5.76,1.63,3.67,0.0,5.35,30.7);
+        assertEquals(9.0, TexturaSolo.ARGILOSO.getQTDIdealFosforo(), 0.0);
+        assertEquals(0.35,TexturaSolo.ARGILOSO.getQTDIdealPotassio() , 0.0);
+        assertEquals(6.0, TexturaSolo.ARGILOSO.getQTDIdealCalcio(), 0.0);
+        assertEquals(1.5, TexturaSolo.ARGILOSO.getQTDIdealMagnesio(), 0.0);
+        assertEquals(9.0, TexturaSolo.ARGILOSO.getQTDIdealEnxofre(), 0.0);
+        assertEquals(0.0, TexturaSolo.ARGILOSO.getQTDIdealAluminio(), 0.0);
         assertEquals(7.54, amostra.somaCmol(),0.0);//testar Scmol
         assertEquals(12.89, amostra.ctc(),0.0);//testar CTC cmol
         assertEquals(58.494957331264544, amostra.satBaseV(),0.0);//testar V%atual
